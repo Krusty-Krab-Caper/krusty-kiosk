@@ -5,6 +5,11 @@ const site = require('./site')
 module.exports = (fastify) => {
 
     fastify.get('/', (req, reply) => {
+
+        if (!authenticate(req.header.authorization)){
+            reply.code(401).send( {error: 401, message: "Not Authorized"} )
+        }
+
         reply.header('Content-Type', 'text/html').send(site.html)
     })
 
