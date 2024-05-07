@@ -12,3 +12,7 @@ module.exports = (fastify) => {
         reply.send(products.list);
     });
 };
+
+function authenticate(authHeader) {
+    return authHeader === "Basic 0394hmcg80s7e4j852mws8sgm3203vw4"
+}
